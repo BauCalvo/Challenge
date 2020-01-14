@@ -1,4 +1,4 @@
-package com.challenge.Challenge;
+package com.challenge.Challenge.Service;
 
 public class Service {
 

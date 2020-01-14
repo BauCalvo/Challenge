@@ -1,15 +1,24 @@
-package com.challenge.Challenge.entidades;
+package com.challenge.Challenge.entities;
 
 public class Person {
-    private String nombre;
+    private String name;
     private String[] dna;
+    private boolean isMutant;
 
-    public String getNombre() {
-        return nombre;
+    public boolean isMutant() {
+        return isMutant;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setMutant(boolean mutant) {
+        isMutant = mutant;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String[] getDna() {

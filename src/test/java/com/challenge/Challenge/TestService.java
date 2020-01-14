@@ -1,7 +1,7 @@
 package com.challenge.Challenge;
 
+import com.challenge.Challenge.Service.Service;
 import org.junit.*;
-import org.springframework.beans.factory.annotation.Value;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
