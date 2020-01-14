@@ -17,7 +17,7 @@ public class Service {
 
 
 
-        public static boolean horizontalSearch(String[] dna){
+        public boolean horizontalSearch(String[] dna){
             for (String chain:dna) {
                 if (chainSearch(chain)){
                     return true;
@@ -28,7 +28,7 @@ public class Service {
         }
 
         // cambiar
-        public static boolean verticalSearch(String[] dna){
+        public boolean verticalSearch(String[] dna){
             for (int i = 0; i < dna.length; i++){
                 String verticalChain = "";
                 for (int j = 0; j < dna.length; j++){
@@ -41,7 +41,7 @@ public class Service {
             return false;
         }
 
-        public static boolean diagonalSearch(String[] dna){
+        public boolean diagonalSearchLeft(String[] dna){
             // top left corner to right down corner
             for(int x = 0; x < dna.length - 3;x++){
                 String diagonalChain = "";
@@ -58,13 +58,16 @@ public class Service {
                 String diagonalChain = "";
                 int j = 0 ;
                 for (int i = 0 + x; j < dna.length && i < dna.length; i++){
-                    diagonalChain = diagonalChain + dna[j].charAt(i);
+                    diagonalChain = diagonalChain + dna[i].charAt(j);
                     j++;
                 }
                 if (chainSearch(diagonalChain)){
                     return true;
                 }
             }
+            return false;
+        }
+        public boolean diagonalSearchRight(String[] dna){
             // TOP right corner to left down corner
             for (int x = 0; x < dna.length - 3;x++){
                 String diagonalChain = "";
