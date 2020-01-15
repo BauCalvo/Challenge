@@ -1,8 +1,27 @@
 package com.challenge.Challenge.Service;
 
-public class Service {
+import com.challenge.Challenge.entities.Mutant;
+import com.challenge.Challenge.repositories.MutantRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class MutantService {
 
+        @Autowired
+        MutantRepository repository;
+
+        public void addMutant(Mutant mutant){
+            repository.insert(mutant);
+        }
+
+        public boolean isMutant(String[] dna){
+            if(horizontalSearch(dna)){return true;}
+            if(verticalSearch(dna)){return true;}
+            if(diagonalSearchLeft(dna)){return true;}
+            if(diagonalSearchRight(dna)){return true;}
+            return false;
+        }
 
         public static boolean chainSearch(String chain){
             for (int i = 0; i < chain.length() - 3;i++){

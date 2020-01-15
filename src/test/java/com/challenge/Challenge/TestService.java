@@ -1,6 +1,6 @@
 package com.challenge.Challenge;
 
-import com.challenge.Challenge.Service.Service;
+import com.challenge.Challenge.Service.MutantService;
 import org.junit.*;
 
 import static org.junit.Assert.assertFalse;
@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 
 
 public class TestService {
-    private Service bo = new Service();
+    private MutantService bo = new MutantService();
 
     private String[] mutant = {"GCTATA","ACTGA","CGTCAG","CTGACC","CCAGTA","CTTTTG"};
     private String[] human = {"GAGAGA","CTCTCT","GAGAGA","CTCTCT","GAGAGA","CTCTCT"};

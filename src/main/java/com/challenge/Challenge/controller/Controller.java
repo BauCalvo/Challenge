@@ -1,25 +1,30 @@
 package com.challenge.Challenge.controller;
 
 
-import com.challenge.Challenge.entities.Person;
-import com.challenge.Challenge.repositories.PersonaRepository;
+import com.challenge.Challenge.Service.MutantService;
+import com.challenge.Challenge.entities.Mutant;
+import com.challenge.Challenge.exceptions.NotMutantException;
+import com.challenge.Challenge.repositories.MutantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value="/api")
+@RequestMapping(value="/mutant")
 public class Controller {
 
     @Autowired
-    PersonaRepository repository;
+    MutantService bo;
 
 
     @RequestMapping(value ="", method = RequestMethod.POST)
-    public Person addPerson(@RequestBody Person person){
-        return repository.insert(person);
+    public void addMutant(@RequestBody Mutant mutant){
+        if(bo.isMutant(mutant.getDna())) {
+            bo.addMutant(mutant);
+        }
+        else {
+            throw new NotMutantException();
+        }
     }
-    @RequestMapping(value ="/name/{name}", method = RequestMethod.GET)
-    public Person addPerson(@PathVariable(name = "name") String name){
-        return repository.findByName(name);
-    }
+
+
 }
