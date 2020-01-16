@@ -5,6 +5,8 @@ import com.challenge.Challenge.repositories.MutantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MutantService {
 
@@ -13,6 +15,17 @@ public class MutantService {
 
         public void addMutant(Mutant mutant){
             repository.insert(mutant);
+        }
+
+        public List<Mutant> findAll(){
+            return repository.findAll();
+        }
+
+        public boolean valdation(String[] dna){
+             if (repository.findByDna(dna) == null){
+                 return true;
+             }
+             return false;
         }
 
         public boolean isMutant(String[] dna){

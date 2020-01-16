@@ -1,14 +1,20 @@
 package com.challenge.Challenge;
 
 import com.challenge.Challenge.Service.MutantService;
+import com.challenge.Challenge.entities.Mutant;
+import com.challenge.Challenge.repositories.MutantRepository;
 import org.junit.*;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 
 public class TestService {
-    private MutantService bo = new MutantService();
+
+    @Autowired
+    private MutantService bo ;
+    @Autowired
+    private MutantRepository repository;
 
     private String[] mutant = {"GCTATA","ACTGA","CGTCAG","CTGACC","CCAGTA","CTTTTG"};
     private String[] human = {"GAGAGA","CTCTCT","GAGAGA","CTCTCT","GAGAGA","CTCTCT"};

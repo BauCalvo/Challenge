@@ -8,22 +8,29 @@ import com.challenge.Challenge.repositories.MutantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping(value="/mutant")
+@RequestMapping(value="")
 public class Controller {
 
     @Autowired
     MutantService bo;
 
-
-    @RequestMapping(value ="", method = RequestMethod.POST)
+    @RequestMapping(value ="/mutant", method = RequestMethod.POST)
     public void addMutant(@RequestBody Mutant mutant){
         if(bo.isMutant(mutant.getDna())) {
-            bo.addMutant(mutant);
+            if(bo.valdation(mutant.getDna())){
+                bo.addMutant(mutant);
+            }
         }
         else {
             throw new NotMutantException();
         }
+    }
+    @RequestMapping(value ="", method = RequestMethod.GET)
+    public List<Mutant> seeAll(){
+        return bo.findAll();
     }
 
 
